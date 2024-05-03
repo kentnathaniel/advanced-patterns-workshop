@@ -9,6 +9,11 @@ import { Equal, Expect } from "../helpers/type-utils";
  * 2. Inside declare global, you'll need to modify the Window
  * interface to add a makeGreeting function
  */
+declare global {
+  interface Window {
+    makeGreeting: () => string;
+  }
+}
 
 window.makeGreeting = () => "Hello, world!";
 
