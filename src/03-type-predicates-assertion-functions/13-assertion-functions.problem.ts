@@ -15,7 +15,9 @@ interface NormalUser extends User {
   role: "normal";
 }
 
-function assertUserIsAdmin(user: NormalUser | AdminUser) {
+function assertUserIsAdmin(
+  user: NormalUser | AdminUser
+): asserts user is AdminUser {
   if (user.role !== "admin") {
     throw new Error("Not an admin user");
   }
@@ -32,7 +34,7 @@ it("Should throw an error when it encounters a normal user", () => {
 });
 
 it("Should assert that the type is an admin user after it has been validated", () => {
-  const example = (user: NormalUser | AdminUser) => {
+  const example = (user: NormalUser | AdminUser, str: any) => {
     assertUserIsAdmin(user);
 
     type tests = [Expect<Equal<typeof user, AdminUser>>];
