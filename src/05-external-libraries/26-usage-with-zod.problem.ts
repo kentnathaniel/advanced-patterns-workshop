@@ -1,10 +1,10 @@
 import { expect, it } from "vitest";
-import { z } from "zod";
+import { ZodTypeDef, z } from "zod";
 
-const makeZodSafeFunction = (
-  schema: unknown,
-  func: (arg: unknown) => unknown
-) => {
+const makeZodSafeFunction = <TInput>(
+  schema: z.ZodSchema<any, ZodTypeDef, TInput>,
+  func: (arg: TInput) => any
+): ((arg: TInput) => any) => {
   return (arg: unknown) => {
     const result = schema.parse(arg);
     return func(result);
