@@ -10,9 +10,7 @@ import { doNotExecute, Equal, Expect } from "../helpers/type-utils";
  * 2. Take a look at the typings for _.groupBy to
  * see if you can understand them.
  */
-const groupByAge = <T extends { name: string; age: number }>(
-  array: List<T>
-) => {
+const groupByAge = <T extends { age: number }>(array: List<T>) => {
   const grouped = _.groupBy(array, "age");
 
   return grouped;
