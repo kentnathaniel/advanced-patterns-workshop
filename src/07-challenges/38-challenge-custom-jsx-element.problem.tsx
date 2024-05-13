@@ -10,4 +10,15 @@ import React from "react";
  * to check out React's type definitions.
  */
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "custom-element": React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLDivElement>,
+        HTMLDivElement
+      >;
+    }
+  }
+}
+
 const element = <custom-element>hello world</custom-element>;
